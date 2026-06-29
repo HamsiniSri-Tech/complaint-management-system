@@ -1,0 +1,160 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background-color: #f9fafb;
+    color: #111827;
+    -webkit-font-smoothing: antialiased;
+  }
+}
+
+@layer components {
+  /* ── Buttons ─────────────────────────────────────────────── */
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 px-4 py-2
+           rounded-lg font-medium text-sm transition-all duration-200
+           focus:outline-none focus:ring-2 focus:ring-offset-2
+           disabled:opacity-60 disabled:cursor-not-allowed cursor-pointer;
+  }
+  .btn-primary {
+    @apply btn bg-blue-600 text-white hover:bg-blue-700
+           focus:ring-blue-500 active:bg-blue-800;
+  }
+  .btn-secondary {
+    @apply btn bg-gray-100 text-gray-700 hover:bg-gray-200
+           focus:ring-gray-400 border border-gray-300;
+  }
+  .btn-danger {
+    @apply btn bg-red-600 text-white hover:bg-red-700 focus:ring-red-500;
+  }
+  .btn-success {
+    @apply btn bg-green-600 text-white hover:bg-green-700
+           focus:ring-green-500;
+  }
+  .btn-warning {
+    @apply btn bg-yellow-500 text-white hover:bg-yellow-600
+           focus:ring-yellow-400;
+  }
+  .btn-sm {
+    @apply px-3 py-1.5 text-xs;
+  }
+  .btn-lg {
+    @apply px-6 py-3 text-base;
+  }
+
+  /* ── Inputs ──────────────────────────────────────────────── */
+  .input {
+    @apply w-full px-3 py-2 border border-gray-300 rounded-lg text-sm
+           focus:outline-none focus:ring-2 focus:ring-blue-500
+           focus:border-blue-500 transition-colors duration-200
+           placeholder-gray-400 bg-white text-gray-900;
+  }
+  .input-error {
+    @apply border-red-500 focus:ring-red-500 focus:border-red-500;
+  }
+  .label {
+    @apply block text-sm font-medium text-gray-700 mb-1;
+  }
+  .error-text {
+    @apply text-red-600 text-xs mt-1;
+  }
+
+  /* ── Cards ───────────────────────────────────────────────── */
+  .card {
+    @apply bg-white rounded-xl shadow-sm border border-gray-200 p-6;
+  }
+  .card-hover {
+    @apply card hover:shadow-md transition-shadow duration-200 cursor-pointer;
+  }
+
+  /* ── Badges ──────────────────────────────────────────────── */
+  .badge {
+    @apply inline-flex items-center px-2.5 py-0.5 rounded-full
+           text-xs font-medium;
+  }
+  .badge-pending     { @apply badge bg-yellow-100 text-yellow-800; }
+  .badge-assigned    { @apply badge bg-blue-100   text-blue-800;   }
+  .badge-in-progress { @apply badge bg-purple-100 text-purple-800; }
+  .badge-resolved    { @apply badge bg-green-100  text-green-800;  }
+  .badge-rejected    { @apply badge bg-red-100    text-red-800;    }
+  .badge-low         { @apply badge bg-gray-100   text-gray-700;   }
+  .badge-medium      { @apply badge bg-orange-100 text-orange-700; }
+  .badge-high        { @apply badge bg-red-100    text-red-700;    }
+
+  /* ── Table ───────────────────────────────────────────────── */
+  .table-container {
+    @apply overflow-x-auto rounded-xl border border-gray-200;
+  }
+  .table {
+    @apply w-full text-sm text-left;
+  }
+  .table thead {
+    @apply bg-gray-50 text-gray-600 text-xs uppercase tracking-wider;
+  }
+  .table th {
+    @apply px-4 py-3 font-semibold;
+  }
+  .table td {
+    @apply px-4 py-3 border-t border-gray-100;
+  }
+  .table tbody tr {
+    @apply hover:bg-gray-50 transition-colors duration-100;
+  }
+
+  /* ── Sidebar ─────────────────────────────────────────────── */
+  .sidebar-link {
+    @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm
+           font-medium text-gray-600 hover:bg-blue-50 hover:text-blue-700
+           transition-all duration-200 cursor-pointer w-full;
+  }
+  .sidebar-link.active {
+    @apply bg-blue-100 text-blue-700 font-semibold;
+  }
+
+  /* ── Page Header ─────────────────────────────────────────── */
+  .page-header {
+    @apply flex flex-col sm:flex-row sm:items-center
+           sm:justify-between gap-4 mb-6;
+  }
+  .page-title {
+    @apply text-2xl font-bold text-gray-900;
+  }
+  .page-subtitle {
+    @apply text-sm text-gray-500 mt-1;
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* ── Animations ──────────────────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to   { transform: translateX(0);     }
+}
+.animate-fadeIn  { animation: fadeIn  0.25s ease-out; }
+.animate-slideIn { animation: slideIn 0.25s ease-out; }
+
+/* ── Scrollbar ────────────────────────────────────────────────── */
+::-webkit-scrollbar       { width: 5px; height: 5px; }
+::-webkit-scrollbar-track { background: #f1f5f9; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: #94a3b8; }
