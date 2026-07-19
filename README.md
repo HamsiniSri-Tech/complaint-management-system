@@ -60,4 +60,4 @@ JWT_SECRET=your_secret_key
 ```
 
 ## Author
-Hamsini Sri
+Hamsini Sri Akkineni
